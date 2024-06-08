@@ -15,3 +15,4 @@
 13.calculate the percentage contribution of each pizza type to total revenue 
 14. analyze the cumulative revenue generated over time
 15.determine the top 3 most ordered pizza types based on revenue for each pizza category
+16.Find the day with the highest sales in terms of the number of pizzas sold and display the details of the orders on that day
