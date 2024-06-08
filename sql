@@ -3,14 +3,14 @@ SELECT count(order_id) as total_orders FROM pizzapoint.orders;
 
 2.Find the total number of pizzas ordered on a specific date
  SELECT SUM(quantity) AS total_pizzas
-FROM order_details JOIN orders ON order_details.order_id = orders.order_id
+FROM order_details od JOIN orders  o ON od.order_id = o.order_id
 WHERE date = '2015-01-01';
 
 3.Get the details of all orders that include a specific pizza (e.g., 'hawaiian_m')
- SELECT orders.order_id, orders.date, orders.time, order_details.pizza_id, order_details.quantity
-FROM orders
-JOIN order_details ON orders.order_id = order_details.order_id
-WHERE order_details.pizza_id = 'hawaiian_m';
+SELECT o.order_id, o.date, o.time, od.pizza_id, od.quantity
+FROM orders  o
+JOIN order_details   od  ON o.order_id = od.order_id
+WHERE od.pizza_id = 'hawaiian_m';
 
 4.calculate the total renvenue generated from the pizza sales 
 SELECT  ROUND(SUM(o.quantity * p.price),2) AS total_renvenue
@@ -105,3 +105,15 @@ join pizzas p on pt.pizza_type_id = p.pizza_type_id
 join order_details  od on od.pizza_id = p.pizza_id 
 group by pt.category , pt.name ) as a) as b 
 where rn <=3 ;
+
+16.Find the day with the highest sales in terms of the number of pizzas sold and display the details of the orders on that day:
+WITH daily_sales AS (
+    SELECT date, SUM(quantity) AS total_pizzas
+    FROM orders
+    JOIN order_details ON o.order_id = od.order_id
+    GROUP BY date
+)
+SELECT o.order_id, o.date, o.time, od.pizza_id, od.quantity
+FROM orders o
+JOIN order_details od ON o.order_id = od.order_id
+WHERE o.date = (SELECT date FROM daily_sales ORDER BY total_pizzas DESC LIMIT 1)
