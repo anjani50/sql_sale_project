@@ -1,7 +1,7 @@
 # sql_sale_project
 
 1.retrieve the total number of order placed
-2.Retrieve all orders placed on a specific date
+2.Find the total number of pizzas ordered on a specific date
 3.Get the details of all orders that include a specific pizza (e.g., 'hawaiian_m')
 4.calculate the total renvenue generated from the pizza sales 
 5.identify the highest-priced pizza
