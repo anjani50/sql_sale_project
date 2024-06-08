@@ -1,6 +1,13 @@
 1.retrieve the total number of order placed
 SELECT count(order_id) as total_orders FROM pizzapoint.orders;
 
+2.Find the total number of pizzas ordered on a specific date
+ SELECT SUM(quantity) AS total_pizzas
+FROM order_details JOIN orders ON order_details.order_id = orders.order_id
+WHERE date = '2015-01-01';
+
+
+
 2.calculate the total renvenue generated from the pizza sales 
 SELECT  ROUND(SUM(o.quantity * p.price),2) AS total_renvenue
 FROM pizzas p JOIN
