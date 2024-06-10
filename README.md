@@ -2,7 +2,7 @@
 
 1.retrieve the total number of order placed
 insert values in order_details
-
+remove or delete the above values 
 2.Find the total number of pizzas ordered on a specific date
 3.Get the details of all orders that include a specific pizza (e.g., 'hawaiian_m')
 4.calculate the total renvenue generated from the pizza sales 
